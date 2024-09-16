@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Linear Regression API</title>
+</head>
+<body>
+    <h1>Gửi Yêu Cầu POST Đến API</h1>
+    <form id="apiForm">
+        <label for="rm">Số phòng trung bình (RM):</label>
+        <input type="number" id="rm" name="rm" step="0.1" required>
+        <button type="submit">Gửi</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('apiForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var rmValue = document.getElementById('rm').value;
+            var url = 'http://10.0.1.228:5000/predict';
+            var data = { RM: parseFloat(rmValue) };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                document.getElementById('result').innerText = 'Dự đoán giá nhà: ' + result.prediction+'$';
+            })
+            .catch(error => {
+                console.error('Có lỗi xảy ra:', error);
+            });
+        });
+    </script>
+</body>
+</html>

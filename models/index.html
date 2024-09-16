@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Đoán Giá Nhà</title>
+</head>
+<body>
+    <h1>Gửi Yêu Cầu POST Đến API Dự Đoán Giá Nhà</h1>
+    
+    <!-- Form nhập dữ liệu cho các biến -->
+    <form id="predictForm">
+        <label for="crim">Tỉ lệ tội phạm (CRIM):</label>
+        <input type="number" id="crim" name="crim" step="0.01" required><br><br>
+
+        <label for="zn">Tỉ lệ đất cho khu dân cư (ZN):</label>
+        <input type="number" id="zn" name="zn" step="0.01" required><br><br>
+
+        <label for="indus">Tỉ lệ đất công nghiệp (INDUS):</label>
+        <input type="number" id="indus" name="indus" step="0.01" required><br><br>
+
+        <label for="chas">Sát sông (CHAS - 1 hoặc 0):</label>
+        <input type="number" id="chas" name="chas" step="1" min="0" max="1" required><br><br>
+
+        <label for="nox">Nồng độ oxit nitơ (NOX):</label>
+        <input type="number" id="nox" name="nox" step="0.01" required><br><br>
+
+        <label for="rm">Số phòng trung bình (RM):</label>
+        <input type="number" id="rm" name="rm" step="0.1" required><br><br>
+
+        <label for="age">Tỉ lệ nhà xây dựng trước năm 1940 (AGE):</label>
+        <input type="number" id="age" name="age" step="0.1" required><br><br>
+
+        <label for="dis">Khoảng cách đến trung tâm việc làm (DIS):</label>
+        <input type="number" id="dis" name="dis" step="0.1" required><br><br>
+
+        <label for="rad">Chỉ số tiếp cận đường cao tốc (RAD):</label>
+        <input type="number" id="rad" name="rad" step="1" required><br><br>
+
+        <label for="tax">Thuế tài sản (TAX):</label>
+        <input type="number" id="tax" name="tax" step="0.1" required><br><br>
+
+        <label for="ptratio">Tỉ lệ học sinh-giáo viên (PTRATIO):</label>
+        <input type="number" id="ptratio" name="ptratio" step="0.1" required><br><br>
+
+        <label for="b">Tỉ lệ người da đen (B):</label>
+        <input type="number" id="b" name="b" step="0.1" required><br><br>
+
+        <label for="lstat">Tỉ lệ người nghèo (LSTAT):</label>
+        <input type="number" id="lstat" name="lstat" step="0.1" required><br><br>
+
+        <button type="submit">Gửi Dữ Liệu</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        // Khi form được submit
+        document.getElementById('predictForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Lấy giá trị từ các input fields
+            var data = {
+                CRIM: parseFloat(document.getElementById('crim').value),
+                ZN: parseFloat(document.getElementById('zn').value),
+                INDUS: parseFloat(document.getElementById('indus').value),
+                CHAS: parseInt(document.getElementById('chas').value),
+                NOX: parseFloat(document.getElementById('nox').value),
+                RM: parseFloat(document.getElementById('rm').value),
+                AGE: parseFloat(document.getElementById('age').value),
+                DIS: parseFloat(document.getElementById('dis').value),
+                RAD: parseInt(document.getElementById('rad').value),
+                TAX: parseFloat(document.getElementById('tax').value),
+                PTRATIO: parseFloat(document.getElementById('ptratio').value),
+                B: parseFloat(document.getElementById('b').value),
+                LSTAT: parseFloat(document.getElementById('lstat').value)
+            };
+
+            // Gửi yêu cầu POST đến API
+            fetch('http://192.168.1.100:5000/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                // Hiển thị kết quả dự đoán
+                document.getElementById('result').innerText = 'Dự đoán giá nhà: ' + result.prediction;
+            })
+            .catch(error => {
+                console.error('Có lỗi xảy ra:', error);
+            });
+        });
+    </script>
+</body>
+</html>

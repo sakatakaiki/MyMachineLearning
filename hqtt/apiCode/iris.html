@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Đoán Loài Hoa Iris</title>
+</head>
+<body>
+    <h1>Dự Đoán Loài Hoa Iris</h1>
+
+    <!-- Form nhập dữ liệu cho các đặc trưng -->
+    <form id="predictForm">
+        <label for="sepal_length">Chiều dài đài hoa (Sepal Length):</label>
+        <input type="number" id="sepal_length" name="sepal_length" step="0.1" required><br><br>
+
+        <label for="sepal_width">Chiều rộng đài hoa (Sepal Width):</label>
+        <input type="number" id="sepal_width" name="sepal_width" step="0.1" required><br><br>
+
+        <label for="petal_length">Chiều dài cánh hoa (Petal Length):</label>
+        <input type="number" id="petal_length" name="petal_length" step="0.1" required><br><br>
+
+        <label for="petal_width">Chiều rộng cánh hoa (Petal Width):</label>
+        <input type="number" id="petal_width" name="petal_width" step="0.1" required><br><br>
+
+        <button type="submit">Gửi Dữ Liệu</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        // Khi form được submit
+        document.getElementById('predictForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Lấy giá trị từ các input fields
+            var data = {
+                sepal_length: parseFloat(document.getElementById('sepal_length').value),
+                sepal_width: parseFloat(document.getElementById('sepal_width').value),
+                petal_length: parseFloat(document.getElementById('petal_length').value),
+                petal_width: parseFloat(document.getElementById('petal_width').value)
+            };
+
+            // Gửi yêu cầu POST đến API
+            fetch('http://192.168.1.100:5000/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                // Hiển thị kết quả dự đoán
+                if (result.predicted_class) {
+                    document.getElementById('result').innerText = 'Loài diên vĩ dự đoán: ' + result.predicted_class;
+                } else {
+                    document.getElementById('result').innerText = 'Lỗi: ' + result.error;
+                }
+            })
+            .catch(error => {
+                console.error('Có lỗi xảy ra:', error);
+                document.getElementById('result').innerText = 'Có lỗi xảy ra khi gửi yêu cầu.';
+            });
+        });
+    </script>
+</body>
+</html>
