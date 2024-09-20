@@ -4,15 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6caed279-84d2-4220-8ba9-31f1f06fcf5d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/hmud.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/matran.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vectorex.py" afterDir="false" />
+    <list default="true" id="6caed279-84d2-4220-8ba9-31f1f06fcf5d" name="Changes" comment="Day lan dau">
+      <change afterPath="$PROJECT_DIR$/mohinhann/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhann/annIrisApp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhann/ann_iris_model.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhann/mhanniris.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhcqd/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhcqd/cqdIrisApp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhcqd/cqd_iris_model.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhcqd/mhcqdiris.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhnb/apiCode/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhnb/apiCode/nbIrisApp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhnb/apiCode/nbiris.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhsvm/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhsvm/mhsvm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhsvm/svmIrisApp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mohinhsvm/svm_iris_model.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hqtt/apiCode/iris.html" beforeDir="false" afterPath="$PROJECT_DIR$/hqtt/apiCode/iris.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +54,11 @@
     "Python.imageTest.executor": "Run",
     "Python.knndigits.executor": "Run",
     "Python.matran.executor": "Run",
+    "Python.mhanniris.executor": "Run",
+    "Python.mhcqdiris.executor": "Run",
     "Python.mhhqtt.executor": "Run",
     "Python.mhpliris.executor": "Run",
+    "Python.mhsvm.executor": "Run",
     "Python.mohinh_du_doan_gia_nha.executor": "Run",
     "Python.reghouseprice.executor": "Run",
     "Python.requestReg.executor": "Run",
@@ -132,6 +144,19 @@
       <option name="presentableId" value="Default" />
       <updated>1724212453417</updated>
     </task>
+    <task id="LOCAL-00001" summary="Day lan dau">
+      <option name="closed" value="true" />
+      <created>1726457828117</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726457828117</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Day lan dau" />
+    <option name="LAST_COMMIT_MESSAGE" value="Day lan dau" />
   </component>
 </project>
